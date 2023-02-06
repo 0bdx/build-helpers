@@ -1,0 +1,41 @@
+{
+  "name": "build-helpers",
+  "version": "0.0.1",
+  "description": "Helpful utilities for speeding up the ‘build’ part of a zero-build developer experience",
+  "type": "module",
+  "files": [
+    "build-helpers.d.ts",
+    "build-helpers.js"
+  ],
+  "engines": {
+    "node": ">= 14.0.0"
+  },
+  "main": "build-helpers.js",
+  "scripts": {
+    "build:prod": "rollup -c",
+    "build:types": "tsc build-helpers.js --allowJs --declaration --emitDeclarationOnly",
+    "build": "for s in {prod,types};do npm run build:$s;done",
+    "preflight:test": "echo \"🧬 test.js\" && node test.js",
+    "preflight:types": "tsc build-helpers.js --allowJs --checkJs --noEmit",
+    "preflight": "for s in {test,types};do npm run preflight:$s;done",
+    "test": "echo \"🧪 src/test.js\" && node src/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/0bdx/build-helpers.git"
+  },
+  "keywords": [
+    "build",
+    "rollup"
+  ],
+  "author": "0bdx <0@0bdx.com> (0bdx.com)",
+  "license": "MIT",
+  "types": "./build-helpers.d.ts",
+  "bugs": {
+    "url": "https://github.com/0bdx/build-helpers/issues"
+  },
+  "homepage": "https://github.com/0bdx/build-helpers#readme",
+  "devDependencies": {
+    "rollup": "^3.14.0"
+  }
+}
