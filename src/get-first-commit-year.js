@@ -1,22 +1,60 @@
 /**
- * Spawns a child process, to retrieve the year of the first commit from Git.
+ * Retrieves the year of the first commit from `git`, using a child process.
+ * 
+ * This function is fault-tolerant by default, to keep build-pipelines running
+ * smoothly. If its child process fails for any reason, it returns the number 0.
+ * That means, if you are passing the result into `generateBanner()`, the
+ * banner will just show the current year, not a 'from - to' range.
  *
- * @typedef {object}  Buffer  Result of calling `execSync()`
- * @param   {function (string): Buffer}  execSync  from Node.js 'child_process'
- * @returns {number}  Returns the year of the first Git commit
+ * @typedef {import('node:child_process').execSync} ExecSyncSignature
+ * 
+ * @param   {ExecSyncSignature}  execSync
+ *     Synchronously spawns a shell and executes a command;
+ *     Typically `import { execSync } from 'child_process'`, in Node.js
+ * @param   {boolean}  isFaultTolerant
+ *     If `false`, any error is thrown as an exception (default is `true`)
+ * @returns {number}
+ *     Returns the year of the first Git commit;
+ *     Returns zero if `suppressErrors` is `true` and an error occurred
+ * @throws
+ *     Throws an `Error` if `suppressErrors` is `false` and an error occurred;
+ *     Also throws an `Error` if either argument is invalid.
  */
-export default function getFirstCommitYear(execSync) {
-    const fn = 'Warning: getFirstCommitYear():';
+export default function getFirstCommitYear(
+    execSync,
+    isFaultTolerant = true,
+) {
+    // Validate the arguments. An invalid argument always throws an error,
+    // even if `isFaultTolerant` is true.
+    const ep = 'Error: getFirstCommitYear():'; // error prefix
+    if (typeof execSync !== 'function') throw Error(`${ep
+        } execSync is type '${typeof execSync}' not 'function'`);
+    if (typeof isFaultTolerant !== 'boolean') throw Error(`${ep
+        } isFaultTolerant is type '${typeof isFaultTolerant}' not 'boolean'`);
+
     try {
+
+        // Try to get the first commit (assumes pwd is in a Git repo).
         const stdout = execSync('git log $(git rev-list --max-parents=0 HEAD)');
-        if (stdout.error) return console.warn(fn, 'stdout error:', stdout.error);
+
+        // Convert "commit 45650 ... Date:   Tue Feb 7 21:31:04 2023 +0000 ..."
+        // to an array where index 1 is "Tue Feb 7 21:31:04 2023 +0000".
         const matches = stdout.toString().match(/Date:\s*([^\n\r]+)/);
-        if (matches === null) return console.warn(fn, 'Unexpected stdout:', stdout);
+        if (matches === null) throw Error(`stdout doesn't contain 'Date: ...'`);
+
+        // Parse the "Tue Feb 7 21:31:04 2023 +0000" string to a Date instance.
         const date = new Date(matches[1]);
-        if (isNaN(date)) return console.warn(fn, 'Invalid date:', matches[1]);
+        if (isNaN(date.valueOf())) throw Error(`stdout 'Date: ...' is invalid`);
+
+        // Return the four-digit year part of the Date instance.
         return date.getUTCFullYear();
+
     } catch (err) {
-        return console.warn(fn, err.stderr.toString());
+        // By default, getFirstCommitYear() suppresses any error, and returns
+        // a zero instead. See JSDoc description for the rationale.
+        if (isFaultTolerant) return 0;
+
+        // If `isFaultTolerant` was set to `false`, propagate the error.
+        throw Error(`${ep} ${err.message}`)
     }
 }
- 

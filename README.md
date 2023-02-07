@@ -10,6 +10,72 @@ __Helpful utilities for speeding up the ‘build’ part of a zero-build develop
 
 ---
 
+## Contributing
+
+### __Set up your development machine__
+
+1.  Check your __Git__ version:  
+    `git --version # should be 'git version 2.20.1' or greater`
+2.  Check your __Node__ version:  
+    `node --version # should be 'v14.0.0' or greater`
+3.  Check your global __TypeScript__ version:  
+    `tsc --version # should be 'Version 4.9.4' or greater`  
+    There are is no actual TypeScript code in this project, but TypeScript can
+    infer types from the JavaScript code and JSDoc comments.
+    - VS Code uses `tsserver` to highlight errors in __src/__ JavaScript files
+    - `tsc` is needed to generate the __semi-parser.d.ts__ type declaration
+
+### __Set up VS Code__
+
+1.  Check your __VS Code__ version:  
+    `code --version # should be '1.74.3' or greater`
+2.  Install and enable the [`jeremyljackson.vs-docblock`
+    ](https://marketplace.visualstudio.com/items?itemName=jeremyljackson.vs-docblock)
+    extension.
+3.  Install and enable the [`dnamsons.kimbie-dark-plus`
+    ](https://marketplace.visualstudio.com/items?itemName=dnamsons.kimbie-dark-plus)
+    theme.  
+
+### __Set up the repo locally__
+
+Clone the repository, and `cd` into it.  
+`git clone git@github.com:0bdx/build-helpers.git && cd build-helpers`
+
+Install the two dev-dependencies, Rollup and @types/node.  
+`npm i`  
+Rollup 3.14.0 adds 2 packages, 2.5 MB, 31 items.  
+@types/node 18.11.19 adds 1 package, 3.6 MB for 126 items.
+
+Open `build-helpers` in VS Code.  
+`code .`
+
+### __Handy dev commands__
+
+Run all tests on the in-development source code:  
+`npm test`
+
+Build __semi-parser.js__ and __semi-parser.d.ts__:  
+`npm run build:production`  
+`npm run build:typings`
+
+Run all tests on the built __semi-parser.js__ file:  
+`npm run preflight:test`
+
+Check that __semi-parser.js__ uses all types correctly:  
+`npm run preflight:types` @TODO fix this
+
+Or run all the build and preflight steps in one line, eg before committing:  
+`npm run build && npm run preflight`
+
+Display what will be published:  
+`npm publish --dry-run`
+
+Publish to [npmjs.com/package/@0bdx/build-helpers](
+https://www.npmjs.com/package/@0bdx/build-helpers):  
+`npm publish`
+
+---
+
 ## How to create a repo like this, from scratch
 
 ### __1. Create the initial repo__
@@ -67,6 +133,7 @@ sed -ix 's/§0/build-helpers./g' *e.json
 sed -ix 's/author": "/author": "0bdx <0@0bdx.com> (0bdx.com)/' *e.json
 rm package.jsonx
 npm install rollup -D
+npm install @types/node -D
 ```
 
 1. Create a default __package.json__ file:  
@@ -112,5 +179,6 @@ npm install rollup -D
     `sed -ix 's/author": "/author": "0bdx <0@0bdx.com> (0bdx.com)/' *e.json`
 14. Delete the temporary __package.jsonx__ file:  
     `rm package.jsonx`
-15. Install one dev-dependency (3.14.0, 2 packages, 2.5 MB for 31 items):  
-    `npm install rollup -D`
+15. Install two dev-dependencies:  
+    `npm install rollup -D` 3.14.0, 2 packages, 2.5 MB for 31 items  
+    `npm install @types/node -D` 18.11.19, 1 package, 3.6 MB for 126 items
