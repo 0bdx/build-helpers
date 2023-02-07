@@ -1,19 +1,6 @@
 /// <reference types="node" />
-/**
- * Retrieves the year of the first commit from `git`, using a child process.
- *
- * This function is fault-tolerant by default, to keep build-pipelines running
- * smoothly. If its child process fails for any reason, it returns the number 0.
- * That means, if you are passing the result into `generateBanner()`, the
- * banner will just show the current year, not a 'from - to' range.
- */
 export type ExecSyncSignature = typeof import("child_process").execSync;
-/**
- * https://www.npmjs.com/package/build-helpers
- * @version 0.0.1
- * @license Copyright (c) 2023 0bdx <0@0bdx.com> (0bdx.com)
- * SPDX-License-Identifier: MIT
- */
+
 /**
  * Generates a JSDoc block comment, based on package.json data.
  *

@@ -1,4 +1,4 @@
-# build-helpers
+# @0bdx/build-helpers
 
 __Helpful utilities for speeding up the ‘build’ part of a zero-build developer experience.__
 
