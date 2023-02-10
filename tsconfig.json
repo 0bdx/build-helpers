@@ -6,8 +6,8 @@
  *
  * This file is not related to the "build:typings" and "preflight:types" scripts
  * in package.json:
- * - "build:typings" generates the semi-parser.d.ts type declaration
- * - "preflight:types" checks that semi-parser.js uses all types correctly
+ * - "build:typings" generates the build-helpers.d.ts type declaration
+ * - "preflight:types" checks that build-helpers.js uses all types correctly
  */
 {
     "compilerOptions": {

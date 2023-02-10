@@ -2,7 +2,7 @@
 
 __Helpful utilities for speeding up the ‘build’ part of a zero-build developer experience.__
 
-∅&nbsp; __Version:__ 0.0.2  
+∅&nbsp; __Version:__ 0.0.3  
 ∅&nbsp; __NPM:__ <https://www.npmjs.com/package/@0bdx/build-helpers>  
 ∅&nbsp; __Repo:__ <https://github.com/0bdx/build-helpers>  
 ∅&nbsp; __Homepage:__ <https://0bdx.com/build-helpers>
@@ -24,7 +24,7 @@ __Helpful utilities for speeding up the ‘build’ part of a zero-build develop
     There are is no actual TypeScript code in this project, but TypeScript can
     infer types from the JavaScript code and JSDoc comments.
     - VS Code uses `tsserver` to highlight errors in __src/__ JavaScript files
-    - `tsc` is needed to generate the __semi-parser.d.ts__ type declaration
+    - `tsc` is needed to generate the __build-helpers.d.ts__ type declaration
 
 ### __Set up VS Code__
 
@@ -55,14 +55,14 @@ Open `build-helpers` in VS Code.
 Run all tests on the in-development source code:  
 `npm test`
 
-Build __semi-parser.js__ and __semi-parser.d.ts__:  
+Build __build-helpers.js__ and __build-helpers.d.ts__:  
 `npm run build:production`  
 `npm run build:typings`
 
-Run all tests on the built __semi-parser.js__ file:  
+Run all tests on the built __build-helpers.js__ file:  
 `npm run preflight:test`
 
-Check that __semi-parser.js__ uses all types correctly:  
+Check that __build-helpers.js__ uses all types correctly:  
 `npm run preflight:types` @TODO fix this
 
 Or run all the build and preflight steps in one line, eg before committing:  
