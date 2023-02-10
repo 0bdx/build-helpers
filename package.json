@@ -1,6 +1,6 @@
 {
   "name": "@0bdx/build-helpers",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Helpful utilities for speeding up the ‘build’ part of a zero-build developer experience",
   "type": "module",
   "files": [
