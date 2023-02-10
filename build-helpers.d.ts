@@ -1,4 +1,12 @@
 /// <reference types="node" />
+/**
+ * Retrieves the year of the first commit from `git`, using a child process.
+ *
+ * This function is fault-tolerant by default, to keep build-pipelines running
+ * smoothly. If its child process fails for any reason, it returns the number 0.
+ * That means, if you are passing the result into `generateBanner()`, the
+ * banner will just show the current year, not a 'from - to' range.
+ */
 export type ExecSyncSignature = typeof import("child_process").execSync;
 
 /**
@@ -34,6 +42,7 @@ export type ExecSyncSignature = typeof import("child_process").execSync;
  *     Throws an `Error` if arguments are invalid
  */
 export function generateBanner(now: Date, packageJson: string, firstCommitYear?: number, isNpm?: boolean): string;
+
 /**
  * Retrieves the year of the first commit from `git`, using a child process.
  *
@@ -57,6 +66,7 @@ export function generateBanner(now: Date, packageJson: string, firstCommitYear?:
  *     Also throws an `Error` if either argument is invalid.
  */
 export function getFirstCommitYear(execSync: ExecSyncSignature, isFaultTolerant?: boolean): number;
+
 /**
  * Generates a Rollup config object, for building a simple JavaScript library.
  *

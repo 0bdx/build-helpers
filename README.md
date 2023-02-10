@@ -3,6 +3,7 @@
 __Helpful utilities for speeding up the ‘build’ part of a zero-build developer experience.__
 
 ∅&nbsp; __Version:__ 0.0.1  
+∅&nbsp; __NPM:__ <https://www.npmjs.com/package/@0bdx/build-helpers>  
 ∅&nbsp; __Repo:__ <https://github.com/0bdx/build-helpers>  
 ∅&nbsp; __Homepage:__ <https://0bdx.com/build-helpers>
 
@@ -110,7 +111,7 @@ touch build-helpers.d.ts build-helpers.js
 ```sh
 npm init --yes
 sed -ix 's/: "1.0.0",/: "0.0.1",/' *e.json
-sed -ix 's/eywords": \[/eywords": [ "build", "rollup" /' *e.json
+sed -ix 's/keywords": \[/keywords": [ "build", "rollup" /' *e.json
 sed -ix 's/: "ISC",/: "MIT",/' *e.json
 A=(§{1..3},\\n·);sed -ix "s/\"main/${A[*]}·\"main/;s/·/ /g" *e.json
 A=(§{a..f},\\n···);sed -ix "s/\"test/${A[*]}·\"test/;s/·/ /g" *e.json
@@ -141,7 +142,7 @@ npm install @types/node -D
 2. Change the version to 0.0.1:  
    `sed -ix 's/: "1.0.0",/: "0.0.1",/' *e.json`
 3. Add keywords, for better [npmjs.org](http://npmjs.org) searchability:  
-   `sed -ix 's/eywords": \[/eywords": [ "build", "rollup" /' *e.json`
+   `sed -ix 's/keywords": \[/keywords": [ "build", "rollup" /' *e.json`
 4. Change the license to MIT:  
    `sed -ix 's/: "ISC",/: "MIT",/' *e.json`
 5. Insert three top-level placeholder properties before `"main"`, and then  

@@ -182,13 +182,24 @@ function getFirstCommitYear(
  * @returns {object}  Returns a Rollup configuration object
  */
 function rollupConfigBasicLib(outputFile, banner = '') {
+
+    // Validate the arguments.
+    const ep = 'Error: rollupConfigBasicLib():'; // error prefix
+    if (typeof outputFile !== 'string') throw Error(`${ep
+        } outputFile is type '${typeof outputFile}' not 'string'`);
+    if (typeof banner !== 'string') throw Error(`${ep
+        } banner is type '${typeof banner}' not 'string'`);
+    if (outputFile === '') throw Error(`${ep
+        } outputFile is an empty string`);
+
+    const output = {};
+    if (banner !== '') output.banner = banner;
+    output.file = outputFile;
+    output.format = 'es';
+
     return {
-      input: 'src/index.js',
-      output: {
-         banner,
-         file: outputFile,
-         format: 'es',
-      },
+        input: 'src/index.js',
+        output,
    };
 }
 
