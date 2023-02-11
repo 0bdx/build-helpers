@@ -8,7 +8,12 @@
  * banner will just show the current year, not a 'from - to' range.
  */
 export type ExecSyncSignature = typeof import("child_process").execSync;
-
+/**
+ * https://www.npmjs.com/package/@0bdx/build-helpers
+ * @version 0.0.4
+ * @license Copyright (c) 2023 0bdx <0@0bdx.com> (0bdx.com)
+ * SPDX-License-Identifier: MIT
+ */
 /**
  * Generates a JSDoc block comment, based on package.json data.
  *
@@ -28,11 +33,11 @@ export type ExecSyncSignature = typeof import("child_process").execSync;
  * //  ☀ SPDX-License-Identifier: MIT
  * //  ☀/
  *
- * @param   {Date}     now
+ * @param   {Date}  now
  *     A JavaScript Date instance, containing the current year
- * @param   {string}   packageJson
+ * @param   {string}  packageJson
  *     Content of a package.json file
- * @param   {number}   [firstCommitYear]
+ * @param   {number}  [firstCommitYear]
  *     Year of first commit (optional)
  * @param   {boolean}  [isNpm]
  *     True if an npmjs.com package (defaults to false)
@@ -42,7 +47,6 @@ export type ExecSyncSignature = typeof import("child_process").execSync;
  *     Throws an `Error` if arguments are invalid
  */
 export function generateBanner(now: Date, packageJson: string, firstCommitYear?: number, isNpm?: boolean): string;
-
 /**
  * Retrieves the year of the first commit from `git`, using a child process.
  *
@@ -66,7 +70,6 @@ export function generateBanner(now: Date, packageJson: string, firstCommitYear?:
  *     Also throws an `Error` if either argument is invalid.
  */
 export function getFirstCommitYear(execSync: ExecSyncSignature, isFaultTolerant?: boolean): number;
-
 /**
  * Generates a Rollup config object, for building a simple JavaScript library.
  *
@@ -91,8 +94,11 @@ export function getFirstCommitYear(execSync: ExecSyncSignature, isFaultTolerant?
  * npm run build:prod
  * ```
  *
- * @param   {string}  outputFile  name of the file to build, eg `"my-lib.js"`
- * @param   {string}  [banner]  text to start the build file (defaults to "")
- * @returns {object}  Returns a Rollup configuration object
+ * @param   {string}  outputFile
+ *     Name of the file to build, eg `"my-lib.js"`
+ * @param   {string}  [banner]
+ *     Text to start the build file (defaults to "")
+ * @returns {object}
+ *     Returns a Rollup configuration object
  */
 export function rollupConfigBasicLib(outputFile: string, banner?: string): object;

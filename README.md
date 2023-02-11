@@ -2,7 +2,7 @@
 
 __Helpful utilities for speeding up the ‘build’ part of a zero-build developer experience.__
 
-∅&nbsp; __Version:__ 0.0.3  
+∅&nbsp; __Version:__ 0.0.4  
 ∅&nbsp; __NPM:__ <https://www.npmjs.com/package/@0bdx/build-helpers>  
 ∅&nbsp; __Repo:__ <https://github.com/0bdx/build-helpers>  
 ∅&nbsp; __Homepage:__ <https://0bdx.com/build-helpers>
@@ -21,8 +21,8 @@ __Helpful utilities for speeding up the ‘build’ part of a zero-build develop
     `node --version # should be 'v14.0.0' or greater`
 3.  Check your global __TypeScript__ version:  
     `tsc --version # should be 'Version 4.9.4' or greater`  
-    There are is no actual TypeScript code in this project, but TypeScript can
-    infer types from the JavaScript code and JSDoc comments.
+    There is no actual TypeScript code in this project, but TypeScript can infer
+    types from the JavaScript code and JSDoc comments.
     - VS Code uses `tsserver` to highlight errors in __src/__ JavaScript files
     - `tsc` is needed to generate the __build-helpers.d.ts__ type declaration
 
@@ -39,15 +39,15 @@ __Helpful utilities for speeding up the ‘build’ part of a zero-build develop
 
 ### __Set up the repo locally__
 
-Clone the repository, and `cd` into it.  
+Clone the repository, and `cd` into it:  
 `git clone git@github.com:0bdx/build-helpers.git && cd build-helpers`
 
-Install the two dev-dependencies, Rollup and @types/node.  
+Install the two dev-dependencies:  
 `npm i`  
-Rollup 3.14.0 adds 2 packages, 2.5 MB, 31 items.  
-@types/node 18.11.19 adds 1 package, 3.6 MB for 126 items.
+@types/node 18.11.19, 1 package, 3.6 MB for 126 items.  
+Rollup 3.14.0, 2 packages, 2.5 MB for 31 items.  
 
-Open `build-helpers` in VS Code.  
+Open `build-helpers` in VS Code:  
 `code .`
 
 ### __Handy dev commands__
@@ -56,8 +56,8 @@ Run all tests on the in-development source code:
 `npm test`
 
 Build __build-helpers.js__ and __build-helpers.d.ts__:  
-`npm run build:production`  
-`npm run build:typings`
+`npm run build:prod`  
+`npm run build:types`
 
 Run all tests on the built __build-helpers.js__ file:  
 `npm run preflight:test`
@@ -133,8 +133,8 @@ sed -ix 's|exit 1|node src/test.js|' *e.json
 sed -ix 's/§0/build-helpers./g' *e.json
 sed -ix 's/author": "/author": "0bdx <0@0bdx.com> (0bdx.com)/' *e.json
 rm package.jsonx
-npm install rollup -D
 npm install @types/node -D
+npm install rollup -D
 ```
 
 1. Create a default __package.json__ file:  
@@ -181,5 +181,5 @@ npm install @types/node -D
 14. Delete the temporary __package.jsonx__ file:  
     `rm package.jsonx`
 15. Install two dev-dependencies:  
+    `npm install @types/node -D` 18.11.19, 1 package, 3.6 MB for 126 items  
     `npm install rollup -D` 3.14.0, 2 packages, 2.5 MB for 31 items  
-    `npm install @types/node -D` 18.11.19, 1 package, 3.6 MB for 126 items

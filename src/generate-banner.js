@@ -17,11 +17,11 @@
  * //  ☀ SPDX-License-Identifier: MIT
  * //  ☀/
  * 
- * @param   {Date}     now
+ * @param   {Date}  now
  *     A JavaScript Date instance, containing the current year
- * @param   {string}   packageJson
+ * @param   {string}  packageJson
  *     Content of a package.json file
- * @param   {number}   [firstCommitYear]
+ * @param   {number}  [firstCommitYear]
  *     Year of first commit (optional)
  * @param   {boolean}  [isNpm]
  *     True if an npmjs.com package (defaults to false)

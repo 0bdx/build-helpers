@@ -2,7 +2,7 @@ import equal from '../private-methods/equal.js';
 import throws from '../private-methods/throws.js';
 
 /**
- * rollupConfigBasicLib() unit tests
+ * rollupConfigBasicLib() unit tests.
  * 
  * @param   {function}  f  rollupConfigBasicLib()
  * @return  {void}

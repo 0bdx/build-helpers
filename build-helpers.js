@@ -1,6 +1,6 @@
 /**
  * https://www.npmjs.com/package/@0bdx/build-helpers
- * @version 0.0.3
+ * @version 0.0.4
  * @license Copyright (c) 2023 0bdx <0@0bdx.com> (0bdx.com)
  * SPDX-License-Identifier: MIT
  */
@@ -23,11 +23,11 @@
  * //  ☀ SPDX-License-Identifier: MIT
  * //  ☀/
  * 
- * @param   {Date}     now
+ * @param   {Date}  now
  *     A JavaScript Date instance, containing the current year
- * @param   {string}   packageJson
+ * @param   {string}  packageJson
  *     Content of a package.json file
- * @param   {number}   [firstCommitYear]
+ * @param   {number}  [firstCommitYear]
  *     Year of first commit (optional)
  * @param   {boolean}  [isNpm]
  *     True if an npmjs.com package (defaults to false)
@@ -177,9 +177,12 @@ function getFirstCommitYear(
  * npm run build:prod
  * ```
  *
- * @param   {string}  outputFile  name of the file to build, eg `"my-lib.js"`
- * @param   {string}  [banner]  text to start the build file (defaults to "")
- * @returns {object}  Returns a Rollup configuration object
+ * @param   {string}  outputFile
+ *     Name of the file to build, eg `"my-lib.js"`
+ * @param   {string}  [banner]
+ *     Text to start the build file (defaults to "")
+ * @returns {object}
+ *     Returns a Rollup configuration object
  */
 function rollupConfigBasicLib(outputFile, banner = '') {
 

@@ -4,9 +4,9 @@
  * plain JavaScript, not TypeScript, but the developer experience still benefits
  * from live type checking.
  *
- * This file is not related to the "build:typings" and "preflight:types" scripts
+ * This file is not related to the "build:types" and "preflight:types" scripts
  * in package.json:
- * - "build:typings" generates the build-helpers.d.ts type declaration
+ * - "build:types" generates the build-helpers.d.ts type declaration
  * - "preflight:types" checks that build-helpers.js uses all types correctly
  */
 {

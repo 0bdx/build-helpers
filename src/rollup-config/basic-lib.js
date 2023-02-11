@@ -22,9 +22,12 @@
  * npm run build:prod
  * ```
  *
- * @param   {string}  outputFile  name of the file to build, eg `"my-lib.js"`
- * @param   {string}  [banner]  text to start the build file (defaults to "")
- * @returns {object}  Returns a Rollup configuration object
+ * @param   {string}  outputFile
+ *     Name of the file to build, eg `"my-lib.js"`
+ * @param   {string}  [banner]
+ *     Text to start the build file (defaults to "")
+ * @returns {object}
+ *     Returns a Rollup configuration object
  */
 export default function rollupConfigBasicLib(outputFile, banner = '') {
 

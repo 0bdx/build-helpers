@@ -2,7 +2,7 @@ import equal from './private-methods/equal.js';
 import throws from './private-methods/throws.js';
 
 /**
- * generateBanner() unit tests
+ * generateBanner() unit tests.
  * 
  * @param   {function}  f  generateBanner()
  * @return  {void}

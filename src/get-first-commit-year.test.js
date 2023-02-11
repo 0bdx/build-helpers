@@ -2,7 +2,7 @@ import equal from './private-methods/equal.js';
 import throws from './private-methods/throws.js';
 
 /**
- * getFirstCommitYear() unit tests
+ * getFirstCommitYear() unit tests.
  * 
  * @param   {function}  f  getFirstCommitYear()
  * @return  {void}
